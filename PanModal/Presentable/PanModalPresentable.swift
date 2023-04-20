@@ -118,6 +118,13 @@ public protocol PanModalPresentable {
     var allowScrollViewDragToDismiss: Bool { get }
     
     /**
+     Describes what happens when the user interacts the background view.
+     
+     Default value is .dismiss.
+     */
+    var backgroundInteraction: PanModalBackgroundInteraction { get }
+    
+    /**
      A flag to toggle user interactions on the container view.
 
      - Note: Return false to forward touches to the presentingViewController.

@@ -54,6 +54,7 @@ class PanModalTests: XCTestCase {
         XCTAssertEqual(vc.allowsExtendedPanScrolling, false)
         XCTAssertEqual(vc.allowsDragToDismiss, true)
         XCTAssertEqual(vc.isUserInteractionEnabled, true)
+        XCTAssertEqual(vc.backgroundInteraction, PanModalBackgroundInteraction.dismiss)
         XCTAssertEqual(vc.showDragIndicator, false)
     }
 

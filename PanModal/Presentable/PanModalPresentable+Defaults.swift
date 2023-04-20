@@ -69,6 +69,10 @@ public extension PanModalPresentable where Self: UIViewController {
     var allowScrollViewDragToDismiss: Bool {
         return true
     }
+    
+    var backgroundInteraction: PanModalBackgroundInteraction {
+        return .dismiss
+    }
 
     var isUserInteractionEnabled: Bool {
         return true

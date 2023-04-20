@@ -93,8 +93,22 @@ public class PanModalWrappedViewController: UIViewController {
         } else {
             view = DimmedView()
         }
-        view.didTap = { [weak self] _ in
-            self?.dismissPresentedViewController()
+        
+        if let backgroundInteraction = self.presentable?.backgroundInteraction {
+            switch backgroundInteraction {
+            case .forward:
+                view.hitTestHandler = { [weak self] (point, event) in
+                    return self?.view.hitTest(point, with: event)
+                }
+                
+            case .dismiss:
+                view.didTap = { [weak self] _ in
+                    self?.dismissPresentedViewController()
+                }
+                
+            default:
+                break
+            }
         }
         return view
     }()
