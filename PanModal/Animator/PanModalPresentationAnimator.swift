@@ -50,10 +50,14 @@ public class PanModalPresentationAnimator: NSObject {
      */
     private func animatePresentation(transitionContext: UIViewControllerContextTransitioning) {
 
-        guard let toVC = transitionContext.viewController(forKey: .to)
+        guard let toVC = transitionContext.viewController(forKey: .to), let fromVC = transitionContext.viewController(forKey: .from)
             else { return }
 
         let presentable = toVC as? PanModalPresentable.LayoutType
+
+        // Calls viewWillAppear and viewWillDisappear
+        fromVC.beginAppearanceTransition(false, animated: true)
+        toVC.beginAppearanceTransition(true, animated: true)
 
         // Presents the view in shortForm position, initially
         let yPos: CGFloat = presentable?.shortFormYPos ?? 0.0
@@ -80,8 +84,11 @@ public class PanModalPresentationAnimator: NSObject {
             topView?.frame.origin.y = yPos - topViewHeight
             topView?.alpha = 1
         }, config: presentable) { didComplete in
+            fromVC.endAppearanceTransition()
+            toVC.endAppearanceTransition()
             transitionContext.completeTransition(didComplete)
         }
+
     }
 
     /**
@@ -89,7 +96,7 @@ public class PanModalPresentationAnimator: NSObject {
      */
     private func animateDismissal(transitionContext: UIViewControllerContextTransitioning) {
 
-        guard let fromVC = transitionContext.viewController(forKey: .from)
+        guard let fromVC = transitionContext.viewController(forKey: .from), let toVC = transitionContext.viewController(forKey: .to)
             else { return }
 
         let presentable = fromVC as? PanModalPresentable.LayoutType
@@ -103,11 +110,18 @@ public class PanModalPresentationAnimator: NSObject {
             }
         }()
         
+        // Calls viewWillAppear and viewWillDisappear
+        fromVC.beginAppearanceTransition(false, animated: true)
+        toVC.beginAppearanceTransition(true, animated: true)
+        
         PanModalAnimator.animate({
             panView.frame.origin.y = transitionContext.containerView.frame.height + PanModalPresentationController.Constants.dragIndicatorHeight + topViewHeight
             topView?.frame.origin.y = transitionContext.containerView.frame.height
             topView?.alpha = 0.0
         }, config: presentable) { didComplete in
+            // Calls viewDidAppear and viewDidDisappear
+            fromVC.endAppearanceTransition()
+            toVC.endAppearanceTransition()
             fromVC.view.removeFromSuperview()
             transitionContext.completeTransition(didComplete)
         }
