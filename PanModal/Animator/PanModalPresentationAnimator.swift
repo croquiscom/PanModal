@@ -119,10 +119,10 @@ public class PanModalPresentationAnimator: NSObject {
             topView?.frame.origin.y = transitionContext.containerView.frame.height
             topView?.alpha = 0.0
         }, config: presentable) { didComplete in
+            fromVC.view.removeFromSuperview()
             // Calls viewDidAppear and viewDidDisappear
             fromVC.endAppearanceTransition()
             toVC.endAppearanceTransition()
-            fromVC.view.removeFromSuperview()
             transitionContext.completeTransition(didComplete)
         }
     }
