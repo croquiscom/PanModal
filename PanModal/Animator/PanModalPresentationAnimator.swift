@@ -56,8 +56,10 @@ public class PanModalPresentationAnimator: NSObject {
         let presentable = toVC as? PanModalPresentable.LayoutType
 
         // Calls viewWillAppear and viewWillDisappear
-        fromVC.beginAppearanceTransition(false, animated: true)
-        toVC.beginAppearanceTransition(true, animated: true)
+        if presentable?.shouldTriggerLifecycleMethods == true {
+            fromVC.beginAppearanceTransition(false, animated: true)
+            toVC.beginAppearanceTransition(true, animated: true)
+        }
 
         // Presents the view in shortForm position, initially
         let yPos: CGFloat = presentable?.shortFormYPos ?? 0.0
@@ -84,8 +86,10 @@ public class PanModalPresentationAnimator: NSObject {
             topView?.frame.origin.y = yPos - topViewHeight
             topView?.alpha = 1
         }, config: presentable) { didComplete in
-            fromVC.endAppearanceTransition()
-            toVC.endAppearanceTransition()
+            if presentable?.shouldTriggerLifecycleMethods == true {
+                fromVC.endAppearanceTransition()
+                toVC.endAppearanceTransition()
+            }
             transitionContext.completeTransition(didComplete)
         }
 
@@ -111,8 +115,10 @@ public class PanModalPresentationAnimator: NSObject {
         }()
         
         // Calls viewWillAppear and viewWillDisappear
-        fromVC.beginAppearanceTransition(false, animated: true)
-        toVC.beginAppearanceTransition(true, animated: true)
+        if presentable?.shouldTriggerLifecycleMethods == true {
+            fromVC.beginAppearanceTransition(false, animated: true)
+            toVC.beginAppearanceTransition(true, animated: true)
+        }
         
         PanModalAnimator.animate({
             panView.frame.origin.y = transitionContext.containerView.frame.height + PanModalPresentationController.Constants.dragIndicatorHeight + topViewHeight
@@ -121,8 +127,10 @@ public class PanModalPresentationAnimator: NSObject {
         }, config: presentable) { didComplete in
             fromVC.view.removeFromSuperview()
             // Calls viewDidAppear and viewDidDisappear
-            fromVC.endAppearanceTransition()
-            toVC.endAppearanceTransition()
+            if presentable?.shouldTriggerLifecycleMethods == true {
+                fromVC.endAppearanceTransition()
+                toVC.endAppearanceTransition()
+            }
             transitionContext.completeTransition(didComplete)
         }
     }
