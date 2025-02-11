@@ -193,6 +193,15 @@ public protocol PanModalPresentable {
     func willTransition(to state: PanModalPresentationState)
 
     /**
+     Notifies the delegate that the pan modal is about to be presented.
+
+     Default value is an empty implementation.
+     */
+    func panModalWillPresent()
+    
+    func panModalDidPresent()
+    
+    /**
      Notifies the delegate that the pan modal is about to be dismissed.
 
      Default value is an empty implementation.
