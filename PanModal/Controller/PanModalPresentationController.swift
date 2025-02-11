@@ -171,6 +171,8 @@ public class PanModalPresentationController: UIPresentationController {
 
         guard let containerView = containerView
             else { return }
+        
+        notifyWillPresent()
 
         layoutBackgroundView(in: containerView)
         layoutPresentedView(in: containerView)
@@ -188,6 +190,7 @@ public class PanModalPresentationController: UIPresentationController {
     }
 
     override public func dismissalTransitionWillBegin() {
+        notifyWillDismiss()
 
         guard let coordinator = presentedViewController.transitionCoordinator else {
             backgroundView.dimState = .off
@@ -206,7 +209,10 @@ public class PanModalPresentationController: UIPresentationController {
     }
 
     override public func presentationTransitionDidEnd(_ completed: Bool) {
-        if completed { return }
+        if completed {
+            notifyDidPresent()
+            return
+        }
 
         presentable?.panCustomTopView?.removeFromSuperview()
         backgroundView.removeFromSuperview()
@@ -221,6 +227,12 @@ public class PanModalPresentationController: UIPresentationController {
         coordinator.animate(alongsideTransition: { [weak self] _ in
             self?.adjustPresentedViewFrame()
         })
+    }
+    
+    public override func dismissalTransitionDidEnd(_ completed: Bool) {
+        if completed {
+            notifyDidDismiss()
+        }
     }
 
 }
