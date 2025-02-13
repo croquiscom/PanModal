@@ -66,6 +66,10 @@
 		DC3B2EBE222A58C9000C8A4A /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3B2EBD222A58C9000C8A4A /* AlertView.swift */; };
 		DCA741AE216D90410021F2F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA741AD216D90410021F2F2 /* AppDelegate.swift */; };
 		DCC0EE7C21917F2500208DBC /* PanModalPresentable+Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC0EE7B21917F2500208DBC /* PanModalPresentable+Defaults.swift */; };
+		FD72B2902D5AF19400441991 /* PanModalLifeCycleEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72B28F2D5AF19400441991 /* PanModalLifeCycleEvent.swift */; };
+		FD72B2912D5AF19400441991 /* PanModalLifeCycleEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72B28F2D5AF19400441991 /* PanModalLifeCycleEvent.swift */; };
+		FD72B2932D5AF65400441991 /* PanModalPresentationController+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72B2922D5AF65400441991 /* PanModalPresentationController+Event.swift */; };
+		FD72B2942D5AF65400441991 /* PanModalPresentationController+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72B2922D5AF65400441991 /* PanModalPresentationController+Event.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +149,8 @@
 		DCA741AD216D90410021F2F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCA741B9216D90420021F2F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCC0EE7B21917F2500208DBC /* PanModalPresentable+Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PanModalPresentable+Defaults.swift"; sourceTree = "<group>"; };
+		FD72B28F2D5AF19400441991 /* PanModalLifeCycleEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalLifeCycleEvent.swift; sourceTree = "<group>"; };
+		FD72B2922D5AF65400441991 /* PanModalPresentationController+Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PanModalPresentationController+Event.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +285,7 @@
 				DC139065216D9458007A3E64 /* Animator */,
 				DC13906B216D9458007A3E64 /* Controller */,
 				DC139063216D9458007A3E64 /* Delegate */,
+				FD72B28E2D5AF17B00441991 /* Event */,
 				DC139067216D9458007A3E64 /* Presentable */,
 				74C072A8220BA80700124CE1 /* Presenter */,
 				DC13906D216D9458007A3E64 /* View */,
@@ -322,6 +329,7 @@
 				638A937F256B4DC500A5E00B /* PanModalWrappedViewController.swift */,
 				DC13906C216D9458007A3E64 /* PanModalPresentationController.swift */,
 				6ED0BEA82BE4BA110094D900 /* OverContextNavigationController.swift */,
+				FD72B2922D5AF65400441991 /* PanModalPresentationController+Event.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -398,6 +406,14 @@
 				DC13905F216D93AB007A3E64 /* Resources */,
 			);
 			path = Sample;
+			sourceTree = "<group>";
+		};
+		FD72B28E2D5AF17B00441991 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				FD72B28F2D5AF19400441991 /* PanModalLifeCycleEvent.swift */,
+			);
+			path = Event;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -558,6 +574,8 @@
 				0F2A2C652239C151003BDB2F /* PanModalPresentable+UIViewController.swift in Sources */,
 				6ED0BEA72BE4B9DF0094D900 /* OverContextPanModalPresentable.swift in Sources */,
 				0F2A2C662239C153003BDB2F /* PanModalPresentable+LayoutHelpers.swift in Sources */,
+				FD72B2932D5AF65400441991 /* PanModalPresentationController+Event.swift in Sources */,
+				FD72B2912D5AF19400441991 /* PanModalLifeCycleEvent.swift in Sources */,
 				0F2A2C672239C157003BDB2F /* PanModalPresenter.swift in Sources */,
 				D134CC7122641B350022AA29 /* IndicatorView.swift in Sources */,
 				638A9380256B4DC500A5E00B /* PanModalWrappedViewController.swift in Sources */,
@@ -583,6 +601,7 @@
 				D134CC7222641B6E0022AA29 /* IndicatorView.swift in Sources */,
 				743CABB42225FE7700634A5A /* UserGroupMemberPresentable.swift in Sources */,
 				74C072A3220BA6E500124CE1 /* PanModalAnimator.swift in Sources */,
+				FD72B2942D5AF65400441991 /* PanModalPresentationController+Event.swift in Sources */,
 				743CABB8222600C600634A5A /* UserGroupMemberCell.swift in Sources */,
 				743CABB62225FEEE00634A5A /* UserGroupHeaderPresentable.swift in Sources */,
 				743CB2AA222660D100665A55 /* StackedProfileViewController.swift in Sources */,
@@ -604,6 +623,7 @@
 				DC139061216D93ED007A3E64 /* SampleViewController.swift in Sources */,
 				743CABB02225FC9F00634A5A /* UserGroupViewController.swift in Sources */,
 				638A938D256BB26E00A5E00B /* EmbedViewController.swift in Sources */,
+				FD72B2902D5AF19400441991 /* PanModalLifeCycleEvent.swift in Sources */,
 				6E763B4D2A2E25A2002A77E8 /* CustomTopView.swift in Sources */,
 				DCC0EE7C21917F2500208DBC /* PanModalPresentable+Defaults.swift in Sources */,
 				94795C9D21F03368008045A0 /* PanContainerView.swift in Sources */,

@@ -25,9 +25,6 @@ public class PanModalNavigationController: UINavigationController, PanModalPrese
     public var panModalBackgroundColor: UIColor {
         UIColor.black.withAlphaComponent(0.7)
     }
-    public var shouldTriggerLifecycleMethods: Bool {
-        shouldTriggerLifecycleMethodsWhenPresentModal
-    }
 
     public var dragIndicatorBackgroundColor: UIColor { .Palette.surface }
 
@@ -44,7 +41,6 @@ public class PanModalNavigationController: UINavigationController, PanModalPrese
         return topViewController as? PanModalPresentable
     }
     private var borderCoordinator: BorderCoordinator?
-    private var shouldTriggerLifecycleMethodsWhenPresentModal = false
 
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,10 +105,6 @@ public class PanModalNavigationController: UINavigationController, PanModalPrese
         if let presentable = topViewController as? PanModalPresentable {
             presentable.panModalWillDismiss()
         }
-    }
-    
-    public func setPanModalLifecycle(_ enabled: Bool) {
-        shouldTriggerLifecycleMethodsWhenPresentModal = enabled
     }
 }
 

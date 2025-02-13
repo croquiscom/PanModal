@@ -144,14 +144,6 @@ public protocol PanModalPresentable {
     var indicatorColor: UIColor { get }
 
     var panCustomTopView: PanCustomTopView? { get }
-    
-    /**
-     A flag to determine if viewController lifecycle methods should be called
-     during presentation and dismissal.
-     
-     Default value is false for backwards compatibility.
-     */
-    var shouldTriggerLifecycleMethods: Bool { get }
 
     /**
      Asks the delegate if the pan modal should respond to the pan modal gesture recognizer.
@@ -200,6 +192,15 @@ public protocol PanModalPresentable {
      */
     func willTransition(to state: PanModalPresentationState)
 
+    /**
+     Notifies the delegate that the pan modal is about to be presented.
+
+     Default value is an empty implementation.
+     */
+    func panModalWillPresent()
+    
+    func panModalDidPresent()
+    
     /**
      Notifies the delegate that the pan modal is about to be dismissed.
 
